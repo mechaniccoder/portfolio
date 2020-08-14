@@ -10,19 +10,21 @@ const NavWrapper = styled.nav`
   position: fixed;
   top: 0;
   width: calc(100% - 17px);
-  padding: 15px 20px;
+  padding: 15px 300px;
+  background: #1b242f;
   color: #fff;
   z-index: 100;
   ul {
     display: flex;
   }
-  ul.nav__navigators {
+  .nav__navigators {
+    cursor: default;
     li {
       margin-right: 25px;
       font-size: 1.15rem;
     }
   }
-  ul.nav__links {
+  .nav__links {
     li * {
       font-size: 1.3rem;
       margin-left: 30px;

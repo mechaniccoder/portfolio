@@ -20,9 +20,9 @@ function App() {
   return (
     <AppWrapper className="App" ref={app}>
       <Nav />
-      <Main app={app} />
-      <About />
       <Project />
+      <About />
+      <Main app={app} />
       <Else />
     </AppWrapper>
   );
