@@ -1,4 +1,4 @@
-import React, {useRef, useEffect, createRef, forwardRef} from "react";
+import React, {useRef, useEffect} from "react";
 import styled from "styled-components";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faArrowRight} from "@fortawesome/free-solid-svg-icons";

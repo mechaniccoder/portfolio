@@ -1,6 +1,5 @@
-import React, {useState} from "react";
-import styled, {css} from "styled-components";
-import github from "../github.png";
+import React from "react";
+import styled from "styled-components";
 
 const ProjectWrapper = styled.section`
   padding: 60px;
