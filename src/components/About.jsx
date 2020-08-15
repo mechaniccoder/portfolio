@@ -141,7 +141,7 @@ function About({offset, setOffset}) {
 
   useEffect(() => {
     setOffset({about: about.current.offsetTop});
-  }, []);
+  }, [setOffset]);
   return (
     <AboutWrapper className="about" ref={about}>
       <h1>ABOUT</h1>
