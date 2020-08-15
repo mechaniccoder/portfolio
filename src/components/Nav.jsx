@@ -39,7 +39,7 @@ function Nav() {
         <li>HOME</li>
         <li>ABOUT</li>
         <li>PROJECT</li>
-        <li>What else?</li>
+        <li>WHAT ELSE?</li>
       </ul>
       <ul className="nav__links">
         <li>
@@ -49,10 +49,10 @@ function Nav() {
           <FontAwesomeIcon icon={faMobileAlt} />
         </li>
         <li>
-          <i class="fab fa-github"></i>
+          <i className="fab fa-github"></i>
         </li>
         <li>
-          <i class="fab fa-vimeo-v"></i>
+          <i className="fab fa-vimeo-v"></i>
         </li>
       </ul>
     </NavWrapper>

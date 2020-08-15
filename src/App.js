@@ -1,4 +1,4 @@
-import React, {useRef} from "react";
+import React, {useRef, useState} from "react";
 import styled from "styled-components";
 import Nav from "./components/Nav";
 import Main from "./components/Main";
@@ -16,13 +16,14 @@ const AppWrapper = styled.div`
 
 function App() {
   const app = useRef(null);
+  const [offset, setOffset] = useState({});
 
   return (
     <AppWrapper className="App" ref={app}>
       <Nav />
+      <Main app={app} offset={offset} />
+      <About offset={offset} setOffset={setOffset} />
       <Project />
-      <About />
-      <Main app={app} />
       <Else />
     </AppWrapper>
   );

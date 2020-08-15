@@ -1,4 +1,4 @@
-import React, {useRef, useEffect} from "react";
+import React, {useRef, useEffect, createRef, forwardRef} from "react";
 import styled from "styled-components";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faArrowRight} from "@fortawesome/free-solid-svg-icons";
@@ -8,6 +8,7 @@ const MainWrapper = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100vh;
   background: #1b242f;
   overflow: hidden;
   span {
@@ -64,9 +65,11 @@ const MainWrapper = styled.section`
   }
 `;
 
-function Main({app}) {
+function Main({app, offset}) {
   const main = useRef(null);
   const button = useRef(null);
+  // const button = createRef();
+  console.log(offset.about);
 
   const createSquare = () => {
     const square = document.createElement("span");
@@ -96,12 +99,12 @@ function Main({app}) {
   };
 
   useEffect(() => {
+    console.log(button);
     setInterval(createSquare, 150);
     button.current.addEventListener("click", () => {
-      app.current.scrollTop = main.current.scrollHeight;
-      window.scroll({behavior: "smooth"});
+      app.current.scrollTop = offset.about;
     });
-  }, [app]);
+  }, [app, offset]);
 
   return (
     <MainWrapper className="main" ref={main}>
