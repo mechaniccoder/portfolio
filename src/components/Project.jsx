@@ -1,5 +1,41 @@
-import React from "react";
+import React, {useState} from "react";
 import styled from "styled-components";
+import Modal from "./lib/Modal";
+
+const projectsList = [
+  {
+    id: 1,
+    name: "프로젝트 이름",
+    description: "프로젝트 설명입니다.",
+    techs: ["javascript", "node.js"],
+    img:
+      "https://t4.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/330j/image/fqlpwRlRhW2x_4e_SX6M7dm2P4Y.png",
+  },
+  {
+    id: 1,
+    name: "프로젝트 이름",
+    description: "프로젝트 설명입니다.",
+    techs: ["javascript", "node.js"],
+    img:
+      "https://images.unsplash.com/photo-1593642532009-6ba71e22f468?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
+  },
+  {
+    id: 1,
+    name: "프로젝트 이름",
+    description: "프로젝트 설명입니다.",
+    techs: ["javascript", "node.js"],
+    img:
+      "https://t4.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/330j/image/fqlpwRlRhW2x_4e_SX6M7dm2P4Y.png",
+  },
+  {
+    id: 1,
+    name: "프로젝트 이름",
+    description: "프로젝트 설명입니다.",
+    techs: ["javascript", "node.js"],
+    img:
+      "https://t4.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/330j/image/fqlpwRlRhW2x_4e_SX6M7dm2P4Y.png",
+  },
+];
 
 const ProjectWrapper = styled.section`
   padding: 60px;
@@ -51,8 +87,9 @@ const ProjectWrapper = styled.section`
         }
       }
       .gridItem__img {
-        background: url("https://t4.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/330j/image/fqlpwRlRhW2x_4e_SX6M7dm2P4Y.png")
-          center center / cover no-repeat;
+        background-position: center center;
+        background-size: cover;
+        background-repeat: no-repeat;
         width: 100%;
         height: 100%;
         transition: opacity 0.3s;
@@ -96,46 +133,39 @@ const ProjectWrapper = styled.section`
 `;
 
 function Project() {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleOnClick = () => {
+    setShowModal(true);
+  };
+
   return (
     <ProjectWrapper className="project">
       <h1>PROJECT</h1>
       <div className="project__container container">
         <div className="project__gridWrapper">
-          <div className="project__gridItem">
-            <div className="gridItem__img"></div>
-            <div className="gridItem__text">
-              <h3>test</h3>
-              <span>test</span>
-            </div>
-
-            <button className="gridItem__btn">View</button>
-          </div>
-          <div className="project__gridItem">
-            <div className="gridItem__img"></div>
-            <div className="gridItem__text">
-              <h3>test</h3>
-              <span>test</span>
-            </div>
-
-            <button className="gridItem__btn">View</button>
-          </div>
-          <div className="project__gridItem">
-            <div className="gridItem__img"></div>
-            <div className="gridItem__text">
-              <h3>test</h3>
-              <span>test</span>
-            </div>
-
-            <button className="gridItem__btn">View</button>
-          </div>
-          <div className="project__gridItem">
-            <div className="gridItem__img"></div>
-            <div className="gridItem__text">
-              <h3>test</h3>
-              <span>test</span>
-            </div>
-            <button className="gridItem__btn">View</button>
-          </div>
+          {projectsList.map((project) => (
+            <>
+              <div className="project__gridItem">
+                <div
+                  className="gridItem__img"
+                  style={{
+                    backgroundImage: `url(${project.img})`,
+                  }}
+                ></div>
+                <div className="gridItem__text">
+                  <h3>{project.name}</h3>
+                  <span>{project.description}</span>
+                </div>
+                <button className="gridItem__btn" onClick={handleOnClick}>
+                  View
+                </button>
+              </div>
+              {showModal && (
+                <Modal project={project} setShowModal={setShowModal} />
+              )}
+            </>
+          ))}
         </div>
       </div>
     </ProjectWrapper>

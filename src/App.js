@@ -8,9 +8,7 @@ import Else from "./components/Else";
 
 const AppWrapper = styled.div`
   position: relative;
-  scroll-snap-type: y mandatory;
-  height: 100vh;
-  overflow-y: auto;
+  overflow: auto;
   scroll-behavior: smooth;
 `;
 
@@ -21,9 +19,9 @@ function App() {
   return (
     <AppWrapper className="App" ref={app}>
       <Nav />
+      <Project />
       <Main app={app} offset={offset} />
       <About offset={offset} setOffset={setOffset} />
-      <Project />
       <Else />
     </AppWrapper>
   );

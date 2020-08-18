@@ -10,7 +10,6 @@ const MainWrapper = styled.section`
   align-items: center;
   height: 100vh;
   background: #1b242f;
-  overflow: hidden;
   span {
     position: absolute;
     border-radius: 100%;
@@ -69,7 +68,6 @@ function Main({app, offset}) {
   const main = useRef(null);
   const button = useRef(null);
   // const button = createRef();
-  console.log(offset.about);
 
   const createSquare = () => {
     const square = document.createElement("span");
@@ -99,7 +97,6 @@ function Main({app, offset}) {
   };
 
   useEffect(() => {
-    console.log(button);
     setInterval(createSquare, 150);
     button.current.addEventListener("click", () => {
       app.current.scrollTop = offset.about;
