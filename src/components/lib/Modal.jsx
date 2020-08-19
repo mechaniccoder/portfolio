@@ -106,6 +106,7 @@ const ModalWrapper = styled.div`
 
 function Modal({project, setShowModal}) {
   console.log("hi");
+  console.log(project);
   const slide = useRef(null);
   const [slideDirection, setSlideDirection] = useState("");
 
