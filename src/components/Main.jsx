@@ -65,11 +65,10 @@ const MainWrapper = styled.section`
   }
 `;
 
-function Main({app, offset}) {
+function Main({app, offset, setOffset}) {
   const main = useRef(null);
   const button = useRef(null);
-  // const button = createRef();
-
+  console.log(main.current);
   const createSquare = () => {
     const square = document.createElement("span");
 
@@ -98,11 +97,16 @@ function Main({app, offset}) {
   };
 
   useEffect(() => {
+    setOffset((prevOffset) => ({...prevOffset, main: main.current.offsetTop}));
+  }, [setOffset]);
+
+  useEffect(() => {
     setInterval(createSquare, 150);
-    button.current.addEventListener("click", () => {
-      app.current.scrollTop = offset.about;
-    });
-  }, [app, offset]);
+  }, []);
+
+  const handleOnClick = () => {
+    window.scrollTo({top: offset.about});
+  };
 
   return (
     <MainWrapper className="main" ref={main}>
@@ -111,7 +115,7 @@ function Main({app, offset}) {
           안녕하세요, 저는 <strong>유승환</strong>입니다.
         </p>
         <p>저는 풀스택을 지향하는 프론트엔드 개발자입니다.</p>
-        <button ref={button}>
+        <button ref={button} onClick={handleOnClick}>
           나에 대해 알아보기
           <FontAwesomeIcon className="arrow" icon={faArrowRight} />
         </button>

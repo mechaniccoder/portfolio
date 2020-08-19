@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect, useRef} from "react";
 import styled from "styled-components";
 import Modal from "./lib/Modal";
 
@@ -44,7 +44,7 @@ const ProjectWrapper = styled.section`
   height: 100vh;
   h1 {
     position: relative;
-    margin: 15px 0 30px;
+    margin: 15px 0 50px;
     text-align: center;
     font-size: 3rem;
     color: #fff;
@@ -134,9 +134,17 @@ const ProjectWrapper = styled.section`
   }
 `;
 
-function Project() {
+function Project({setOffset}) {
+  const project = useRef(null);
   const [showModal, setShowModal] = useState(false);
   const [projectIndex, setProjectIndex] = useState(null);
+
+  useEffect(() => {
+    setOffset((prevOffset) => ({
+      ...prevOffset,
+      project: project.current.offsetTop,
+    }));
+  }, [setOffset]);
 
   const handleOnClick = (e) => {
     setShowModal(true);
@@ -144,7 +152,7 @@ function Project() {
   };
 
   return (
-    <ProjectWrapper className="project">
+    <ProjectWrapper className="project" ref={project}>
       <h1>PROJECT</h1>
       <div className="project__container container">
         <div className="project__gridWrapper">

@@ -16,13 +16,17 @@ function App() {
   const app = useRef(null);
   const [offset, setOffset] = useState({});
 
+  const handleOnScroll = () => {
+    console.log("hi");
+  };
+
   return (
-    <AppWrapper className="App" ref={app}>
+    <AppWrapper className="App" ref={app} onScroll={handleOnScroll}>
       <Nav offset={offset} />
-      <Project />
-      <Main app={app} offset={offset} />
-      <About offset={offset} setOffset={setOffset} />
-      <Else />
+      <Main app={app} offset={offset} setOffset={setOffset} />
+      <About setOffset={setOffset} />
+      <Project setOffset={setOffset} />
+      {/* <Else /> */}
     </AppWrapper>
   );
 }

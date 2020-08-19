@@ -136,12 +136,16 @@ const AboutWrapper = styled.section`
   }
 `;
 
-function About({offset, setOffset}) {
+function About({setOffset}) {
   const about = useRef(null);
 
   useEffect(() => {
-    setOffset({about: about.current.offsetTop});
+    setOffset((prevOffset) => ({
+      ...prevOffset,
+      about: about.current.offsetTop,
+    }));
   }, [setOffset]);
+
   return (
     <AboutWrapper className="about" ref={about}>
       <h1>ABOUT</h1>
