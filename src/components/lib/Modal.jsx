@@ -2,6 +2,15 @@ import React, {useRef, useState} from "react";
 import styled from "styled-components";
 
 const ModalWrapper = styled.div`
+  animation: opacity 0.3s ease-out;
+  @keyframes opacity {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
   .modalWrapper {
     position: fixed;
     top: 0;
@@ -67,6 +76,8 @@ const ModalWrapper = styled.div`
       transition: all 0.5s;
       div {
         display: inline-block;
+        background-size: cover;
+        background-position: center;
         width: 25%;
         color: red;
       }
@@ -105,8 +116,6 @@ const ModalWrapper = styled.div`
 `;
 
 function Modal({project, setShowModal}) {
-  console.log("hi");
-  console.log(project);
   const slide = useRef(null);
   const [slideDirection, setSlideDirection] = useState("");
 
@@ -134,7 +143,6 @@ function Modal({project, setShowModal}) {
   const handleTransitionEnd = (e) => {
     e.persist();
     if (slideDirection === "next") {
-      console.log(e.target);
       e.target.appendChild(e.target.firstElementChild);
       e.target.style.transition = "none";
       e.target.style.transform = "translate(0)";
@@ -143,6 +151,10 @@ function Modal({project, setShowModal}) {
       });
     }
     setSlideDirection("");
+  };
+
+  const handleLinkClick = () => {
+    window.open(project.link);
   };
 
   return (
@@ -175,7 +187,7 @@ function Modal({project, setShowModal}) {
         <div className="modal__contents">
           <header className="modal__header">
             <h2>프로젝트명</h2>
-            <button>link</button>
+            {project.link && <button onClick={handleLinkClick}>link</button>}
           </header>
           <div className="modal__techs">
             기술스택: javascript, reactjs, html5, css3

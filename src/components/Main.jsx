@@ -10,6 +10,7 @@ const MainWrapper = styled.section`
   align-items: center;
   height: 100vh;
   background: #1b242f;
+  overflow: hidden;
   span {
     position: absolute;
     border-radius: 100%;

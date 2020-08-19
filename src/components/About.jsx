@@ -16,12 +16,12 @@ const AboutWrapper = styled.section`
     /* text-shadow: 15px 15px 3px rgba(0, 0, 0, 0.5); */
     &::before {
       content: "";
-      width: 200px;
+      width: 150px;
       height: 5px;
       background: #000;
       position: absolute;
       left: 50%;
-      bottom: 0;
+      bottom: -10px;
       transform: translateX(-50%);
     }
   }

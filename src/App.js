@@ -18,7 +18,7 @@ function App() {
 
   return (
     <AppWrapper className="App" ref={app}>
-      <Nav />
+      <Nav offset={offset} />
       <Project />
       <Main app={app} offset={offset} />
       <About offset={offset} setOffset={setOffset} />

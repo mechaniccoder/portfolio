@@ -7,6 +7,7 @@ const projectsList = [
     id: 1,
     name: "프로젝트 이름",
     description: "프로젝트 설명입니다.",
+    link: "https://google.com",
     techs: ["javascript", "node.js"],
     img:
       "https://t4.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/330j/image/fqlpwRlRhW2x_4e_SX6M7dm2P4Y.png",
@@ -40,6 +41,7 @@ const projectsList = [
 const ProjectWrapper = styled.section`
   padding: 60px;
   background: #1b242f;
+  height: 100vh;
   h1 {
     position: relative;
     margin: 15px 0 30px;
@@ -48,12 +50,12 @@ const ProjectWrapper = styled.section`
     color: #fff;
     &::before {
       content: "";
-      width: 200px;
+      width: 150px;
       height: 5px;
       background: #fff;
       position: absolute;
       left: 50%;
-      bottom: 0;
+      bottom: -10px;
       transform: translateX(-50%);
     }
   }
@@ -67,7 +69,7 @@ const ProjectWrapper = styled.section`
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    > .project__gridItem {
+    .project__gridItem {
       position: relative;
       width: 390px;
       height: 300px;
@@ -147,7 +149,7 @@ function Project() {
       <div className="project__container container">
         <div className="project__gridWrapper">
           {projectsList.map((project) => (
-            <>
+            <div key={project.id}>
               <div className="project__gridItem">
                 <div
                   className="gridItem__img"
@@ -167,7 +169,7 @@ function Project() {
                   View
                 </button>
               </div>
-            </>
+            </div>
           ))}
           {showModal && (
             <Modal

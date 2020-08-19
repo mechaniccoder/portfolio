@@ -32,7 +32,7 @@ const NavWrapper = styled.nav`
   }
 `;
 
-function Nav() {
+function Nav({offset}) {
   return (
     <NavWrapper className="nav">
       <ul className="nav__navigators">
