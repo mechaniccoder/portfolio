@@ -223,6 +223,7 @@ const AboutWrapper = styled.section`
 function About({setOffset}) {
   const about = useRef(null);
   const slider = useRef(null);
+  const slideBar = useRef(null);
 
   useEffect(() => {
     setOffset((prevOffset) => ({
@@ -232,28 +233,30 @@ function About({setOffset}) {
   }, [setOffset]);
 
   const handlePrevButtonClick = useCallback((e) => {
-    if (slider.current.style.left === "-100%") {
-      console.log("hi");
-      return (slider.current.style.left = "0%");
-    }
-    if (slider.current.style.left === "-200%") {
-      return (slider.current.style.left = "-100%");
+    const currentLeft = Number(slider.current.style.left.slice(1, 2));
+
+    console.log(currentLeft);
+    if (slider.current.style.left === "0%") {
+      return null;
+    } else {
+      return (slider.current.style.left =
+        String((currentLeft - 1) * -100) + "%");
     }
   }, []);
+
   const handleNextButtonClick = useCallback((e) => {
-    if (
-      slider.current.offsetLeft + slider.current.offsetWidth >
-      Math.abs(slider.current.offsetLeft)
-    ) {
-      if (slider.current.style.left === "-100%") {
-        return (slider.current.style.left = "-200%");
-      }
-      if (slider.current.style.left === "-200%") {
-        return null;
-      }
-      slider.current.style.left = "-100%";
-    } else {
+    const slidePage = Math.floor(
+      slider.current.offsetWidth / slideBar.current.offsetWidth
+    );
+    const currentLeft =
+      Number(slider.current.style.left.slice(1, 2)) ||
+      Number(slider.current.style.left.slice(0, 1));
+
+    if (slider.current.style.left === String(slidePage * -100) + "%") {
       return null;
+    } else {
+      return (slider.current.style.left =
+        String((currentLeft + 1) * -100) + "%");
     }
   }, []);
 
@@ -305,7 +308,7 @@ function About({setOffset}) {
           <span>
             - 실제 사용 고객과의 접촉이 많은 서비스 웹으로 최적화 문제 해결
           </span>
-          <span>- 반응형 디자인, 크로스 브라우징 해결</span>
+          <span>- 반응형 디자인, 크로스 브라우징 이슈 해결</span>
           <span>- Django서버 유지보수, AWS EC2, RDS 배포작업 수행</span>
         </div>
 
@@ -335,12 +338,12 @@ function About({setOffset}) {
             </p>
           </div>
 
-          <div className="about__tech --slidebar">
+          <div className="about__tech --slidebar" ref={slideBar}>
             <div className="slider" ref={slider}>
               <img src="/img/typescript.png" alt="" />
               <img src="/img/webpack.png" alt="" />
-              <img src="/img/redux.png" alt="" />
               <img src="/img/node.png" alt="" />
+              <img src="/img/redux.png" alt="" />
               <img src="/img/python.png" alt="" />
               <img src="/img/django.png" alt="" />
               <img src="/img/mysql.png" alt="" />

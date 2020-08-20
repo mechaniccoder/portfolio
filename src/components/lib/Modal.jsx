@@ -35,7 +35,7 @@ const ModalWrapper = styled.div`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: #fff;
+    background: linear-gradient(#000 20%, #fff 20%);
     width: 600px;
     height: 700px;
     border-radius: 0.5rem;
@@ -43,7 +43,7 @@ const ModalWrapper = styled.div`
     z-index: 101;
     .modal__closeBtn {
       position: absolute;
-      top: 10px;
+      bottom: 10px;
       right: 10px;
       padding: 0 15px 15px 15px;
       font-size: 1.5rem;
@@ -56,6 +56,8 @@ const ModalWrapper = styled.div`
     > i {
       font-size: 3rem;
       padding: 15px;
+      color: #9e9e9e;
+      opacity: 0.7;
       z-index: 50;
       &:hover {
         color: #e31b6d;
@@ -79,11 +81,13 @@ const ModalWrapper = styled.div`
       top: 0;
       width: 400%;
       height: 400px;
+      background: #000;
       transition: all 0.5s;
       div {
         display: inline-block;
-        background-size: cover;
+        background-size: contain;
         background-position: center;
+        background-repeat: no-repeat;
         width: 25%;
         color: red;
       }
@@ -178,14 +182,13 @@ function Modal({project, setShowModal}) {
           onTransitionEnd={handleTransitionEnd}
           style={{left: "0"}}
         >
-          <div
-            style={{
-              backgroundImage: `url(${project.img[0]})`,
-            }}
-          ></div>
-          <div>2</div>
-          <div>3</div>
-          <div>4</div>
+          {project.imgs.map((img) => (
+            <div
+              style={{
+                backgroundImage: `url(${img})`,
+              }}
+            ></div>
+          ))}
           {/* DOM 조작할 요소들 */}
         </header>
         <div className="modal__contents">
@@ -194,12 +197,9 @@ function Modal({project, setShowModal}) {
             {project.link && <button onClick={handleLinkClick}>link</button>}
           </header>
           <div className="modal__techs">
-            기술스택: javascript, reactjs, html5, css3
+            기술스택: {project.techs.join(", ")}
           </div>
-          <div className="modal__description">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nihil,
-            consectetur?
-          </div>
+          <div className="modal__description">{project.description}</div>
         </div>
       </section>
     </ModalWrapper>

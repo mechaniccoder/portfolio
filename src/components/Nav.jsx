@@ -96,6 +96,16 @@ const NavWrapper = styled.nav`
       padding: 10px 0;
       border-radius: 8px;
       background: #e31b6d;
+      transition: 0.3s;
+      animation: opacity 0.3s forwards;
+      @keyframes opacity {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
     }
   }
 `;
