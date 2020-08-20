@@ -9,32 +9,36 @@ const projectsList = [
     description: "프로젝트 설명입니다.",
     link: "https://google.com",
     techs: ["javascript", "node.js"],
-    img:
+    img: [
       "https://t4.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/330j/image/fqlpwRlRhW2x_4e_SX6M7dm2P4Y.png",
+    ],
   },
   {
     id: 2,
     name: "프로젝트 이름",
     description: "프로젝트 설명입니다.",
     techs: ["javascript", "node.js"],
-    img:
+    img: [
       "https://images.unsplash.com/photo-1593642532009-6ba71e22f468?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
+    ],
   },
   {
     id: 3,
     name: "프로젝트 이름",
     description: "프로젝트 설명입니다.",
     techs: ["javascript", "node.js"],
-    img:
+    img: [
       "https://t4.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/330j/image/fqlpwRlRhW2x_4e_SX6M7dm2P4Y.png",
+    ],
   },
   {
     id: 4,
     name: "프로젝트 이름",
     description: "프로젝트 설명입니다.",
     techs: ["javascript", "node.js"],
-    img:
+    img: [
       "https://t4.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/330j/image/fqlpwRlRhW2x_4e_SX6M7dm2P4Y.png",
+    ],
   },
 ];
 
@@ -162,7 +166,7 @@ function Project({setOffset}) {
                 <div
                   className="gridItem__img"
                   style={{
-                    backgroundImage: `url(${project.img})`,
+                    backgroundImage: `url(${project.img[0]})`,
                   }}
                 ></div>
                 <div className="gridItem__text">

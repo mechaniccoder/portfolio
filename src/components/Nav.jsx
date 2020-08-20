@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from "react";
-import styled, {css} from "styled-components";
+import React, {useState} from "react";
+import styled from "styled-components";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEnvelope, faMobileAlt} from "@fortawesome/free-solid-svg-icons";
 
@@ -42,6 +42,12 @@ const NavWrapper = styled.nav`
     }
   }
 
+  .nav__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
   ul {
     display: flex;
   }
@@ -52,8 +58,6 @@ const NavWrapper = styled.nav`
       margin-right: 25px;
       font-size: 1.15rem;
       font-weight: 600;
-      text-align: center;
-      width: 80px;
       transition: 0.3s;
       &:hover {
         color: #e31b6d;
@@ -74,10 +78,12 @@ const NavWrapper = styled.nav`
   .nav__links {
     position: relative;
     li {
-      width: 80px;
-      text-align: center;
+      padding: 0 30px;
+      text-align: right;
       font-size: 1.3rem;
-      /* padding: 0 30px; */
+      &#velog {
+        padding-right: 0;
+      }
     }
     .links__popUp {
       display: flex;
@@ -164,55 +170,58 @@ function Nav({offset}) {
       ${currentScroll === "project" && "project"}`}
       onMouseLeave={handleMouseLeave}
     >
-      <ul className="nav__navigators">
-        <li data-menu="home" onClick={handleOnClick}>
-          HOME
-        </li>
-        <li data-menu="about" onClick={handleOnClick}>
-          ABOUT
-        </li>
-        <li data-menu="project" onClick={handleOnClick}>
-          PROJECT
-        </li>
-        {/* <li data-menu="else" onClick={handleOnClick}>
+      <div className="nav__container container">
+        <ul className="nav__navigators">
+          <li data-menu="home" onClick={handleOnClick}>
+            HOME
+          </li>
+          <li data-menu="about" onClick={handleOnClick}>
+            ABOUT
+          </li>
+          <li data-menu="project" onClick={handleOnClick}>
+            PROJECT
+          </li>
+          {/* <li data-menu="else" onClick={handleOnClick}>
           WHAT ELSE?
         </li> */}
-      </ul>
-      <ul className="nav__links">
-        <li
-          data-icon="email"
-          onMouseOver={handleMouseOver}
-          // onMouseLeave={handleMouseLeave}
-        >
-          <FontAwesomeIcon icon={faEnvelope} />
-        </li>
-        <li
-          data-icon="phone"
-          onMouseOver={handleMouseOver}
-          // onMouseLeave={handleMouseLeave}
-        >
-          <FontAwesomeIcon icon={faMobileAlt} />
-        </li>
-        <li
-          data-icon="github"
-          onMouseOver={handleMouseOver}
-          // onMouseLeave={handleMouseLeave}
-        >
-          <i className="fab fa-github"></i>
-        </li>
-        <li
-          data-icon="velog"
-          onMouseOver={handleMouseOver}
-          // onMouseLeave={handleMouseLeave}
-        >
-          <i className="fab fa-vimeo-v"></i>
-        </li>
-        {iconContent && (
-          <div className="links__popUp" onMouseLeave={handleMouseLeave}>
-            {iconContent}
-          </div>
-        )}
-      </ul>
+        </ul>
+        <ul className="nav__links">
+          <li
+            data-icon="email"
+            onMouseOver={handleMouseOver}
+            // onMouseLeave={handleMouseLeave}
+          >
+            <FontAwesomeIcon icon={faEnvelope} />
+          </li>
+          <li
+            data-icon="phone"
+            onMouseOver={handleMouseOver}
+            // onMouseLeave={handleMouseLeave}
+          >
+            <FontAwesomeIcon icon={faMobileAlt} />
+          </li>
+          <li
+            data-icon="github"
+            onMouseOver={handleMouseOver}
+            // onMouseLeave={handleMouseLeave}
+          >
+            <i className="fab fa-github"></i>
+          </li>
+          <li
+            id="velog"
+            data-icon="velog"
+            onMouseOver={handleMouseOver}
+            // onMouseLeave={handleMouseLeave}
+          >
+            <i className="fab fa-vimeo-v"></i>
+          </li>
+          {iconContent && (
+            <div className="links__popUp" onMouseLeave={handleMouseLeave}>
+              {iconContent}
+            </div>
+          )}
+        </ul>
+      </div>
     </NavWrapper>
   );
 }

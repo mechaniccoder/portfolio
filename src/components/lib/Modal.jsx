@@ -49,11 +49,17 @@ const ModalWrapper = styled.div`
       font-size: 1.5rem;
       z-index: 100;
       cursor: default;
+      &:hover {
+        color: #e31b6d;
+      }
     }
     > i {
       font-size: 3rem;
       padding: 15px;
       z-index: 50;
+      &:hover {
+        color: #e31b6d;
+      }
       &.fa-angle-left {
         position: absolute;
         top: 200px;
@@ -174,11 +180,9 @@ function Modal({project, setShowModal}) {
         >
           <div
             style={{
-              backgroundImage: `url(${project.img})`,
+              backgroundImage: `url(${project.img[0]})`,
             }}
-          >
-            1
-          </div>
+          ></div>
           <div>2</div>
           <div>3</div>
           <div>4</div>

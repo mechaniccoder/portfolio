@@ -68,7 +68,6 @@ const MainWrapper = styled.section`
 function Main({app, offset, setOffset}) {
   const main = useRef(null);
   const button = useRef(null);
-  console.log(main.current);
   const createSquare = () => {
     const square = document.createElement("span");
 

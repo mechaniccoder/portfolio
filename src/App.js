@@ -4,7 +4,7 @@ import Nav from "./components/Nav";
 import Main from "./components/Main";
 import About from "./components/About";
 import Project from "./components/Project";
-import Else from "./components/Else";
+// import Else from "./components/Else";
 
 const AppWrapper = styled.div`
   position: relative;
