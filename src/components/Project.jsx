@@ -180,6 +180,12 @@ const ProjectWrapper = styled.section`
     h1::before {
       width: 100px;
     }
+    .project__gridWrapper {
+      overflow: hidden;
+    }
+    .project__gridWrapper .project__gridItem {
+      margin: 0 0 15px;
+    }
   }
 `;
 

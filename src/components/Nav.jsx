@@ -83,10 +83,15 @@ const NavWrapper = styled.nav`
   }
   .nav__links {
     position: relative;
+
     li {
       padding: 0 30px;
       text-align: right;
       font-size: 1.3rem;
+      &:hover {
+        color: #e31b6d;
+        transition: 0.3s;
+      }
       &#velog {
         padding-right: 0;
       }
@@ -96,7 +101,7 @@ const NavWrapper = styled.nav`
       align-items: center;
       justify-content: center;
       position: absolute;
-      left: -15px;
+      left: 0px;
       top: calc(100% + 15px);
       padding: 10px 5px;
       border-radius: 8px;
@@ -180,6 +185,9 @@ const NavWrapper = styled.nav`
     .nav__links li {
       padding: 0 18px;
     }
+    .nav__links .links__popUp {
+      left: -15px;
+    }
   }
 `;
 
@@ -224,7 +232,7 @@ function Nav({offset}) {
     if (navigator.current.style.position === "fixed") {
       setIsToggle(false);
       hamburger.current.style.display = "block";
-      hamburger.current.style.color = "white";
+      hamburger.current.style.color = "whitee";
       navigator.current.style.display = "none";
     }
   };
@@ -304,24 +312,16 @@ function Nav({offset}) {
         ></i>
         <i className="fas fa-times" onClick={handleMenuBar} ref={closeBtn}></i>
         <ul className="nav__links">
-          <li
-            data-icon="email"
-            onMouseOver={handleMouseOver}
-            // onMouseLeave={handleMouseLeave}
-          >
+          <li data-icon="email" onMouseOver={handleMouseOver}>
             <FontAwesomeIcon icon={faEnvelope} />
           </li>
-          <li
-            data-icon="phone"
-            onMouseOver={handleMouseOver}
-            // onMouseLeave={handleMouseLeave}
-          >
+          <li data-icon="phone" onMouseOver={handleMouseOver}>
             <FontAwesomeIcon icon={faMobileAlt} />
           </li>
           <li
             data-icon="github"
             onMouseOver={handleMouseOver}
-            // onMouseLeave={handleMouseLeave}
+            onClick={() => window.open("https://github.com/mechaniccoder")}
           >
             <i className="fab fa-github"></i>
           </li>
@@ -329,7 +329,7 @@ function Nav({offset}) {
             id="velog"
             data-icon="velog"
             onMouseOver={handleMouseOver}
-            // onMouseLeave={handleMouseLeave}
+            onClick={() => window.open("https://velog.io/@y1andyu")}
           >
             <i className="fab fa-vimeo-v"></i>
           </li>

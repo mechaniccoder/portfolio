@@ -267,13 +267,13 @@ const AboutWrapper = styled.section`
     h1::before {
       width: 100px;
     }
-    .about__values {
+    /* .about__values {
       justify-content: center;
       margin: 0 0 20px;
-    }
+    } */
     .about__values .about__value {
-      width: 290px;
-      margin: 0 15px 15px;
+      width: 100%;
+      margin: 0 0 15px;
     }
     .about__values .about__value h2 {
       font-size: 1.4rem;
@@ -299,17 +299,17 @@ const AboutWrapper = styled.section`
       font-size: 1rem;
     }
   }
-  /* @media screen and (min-width: 400px) and (max-width: 767px) {
+  @media screen and (min-width: 500px) and (max-width: 767px) {
     .about__values .about__value {
-      width: 290px;
-      margin: 0 15px 15px;
+      width: 48%;
+      margin: 0 0px 15px;
     }
   }
   @media screen and (min-width: 360px) and (max-width: 399px) {
     .about__values .about__value {
       width: 100%;
       margin: 0 0 15px;
-    } */
+    }
   }
 `;
 
