@@ -222,9 +222,10 @@ function Nav({offset}) {
         break;
     }
     if (navigator.current.style.position === "fixed") {
+      setIsToggle(false);
       hamburger.current.style.display = "block";
-      closeBtn.current.style.display = "none";
-      return (navigator.current.style.display = "none");
+      hamburger.current.style.color = "white";
+      navigator.current.style.display = "none";
     }
   };
 
