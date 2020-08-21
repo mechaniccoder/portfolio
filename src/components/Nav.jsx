@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useRef} from "react";
 import styled from "styled-components";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEnvelope, faMobileAlt} from "@fortawesome/free-solid-svg-icons";
@@ -10,7 +10,7 @@ const NavWrapper = styled.nav`
   position: fixed;
   top: 0;
   width: 100%;
-  padding: 15px 300px;
+  padding: 15px 0;
   background: #1b242f;
   color: #fff;
   z-index: 100;
@@ -75,6 +75,12 @@ const NavWrapper = styled.nav`
       }
     }
   }
+  i.fa-bars,
+  i.fa-times {
+    display: none;
+    font-size: 1.5rem;
+    transition: 0.3s;
+  }
   .nav__links {
     position: relative;
     li {
@@ -90,10 +96,9 @@ const NavWrapper = styled.nav`
       align-items: center;
       justify-content: center;
       position: absolute;
-      left: 0;
+      left: -15px;
       top: calc(100% + 15px);
-      width: 100%;
-      padding: 10px 0;
+      padding: 10px 5px;
       border-radius: 8px;
       background: #e31b6d;
       transition: 0.3s;
@@ -108,12 +113,84 @@ const NavWrapper = styled.nav`
       }
     }
   }
+  @media screen and (min-width: 360px) and (max-width: 767px) {
+    &.home {
+      .nav__navigators li:first-child {
+        color: #e31b6d;
+      }
+      .nav__navigators li:first-child::before {
+        background: #e31b6d;
+        width: 100px;
+        height: 2px;
+      }
+    }
+    &.about {
+      .nav__navigators li:nth-child(2) {
+        color: #e31b6d;
+      }
+      .nav__navigators li:nth-child(2)::before {
+        background: #e31b6d;
+        width: 100px;
+        height: 2px;
+      }
+    }
+    &.project {
+      .nav__navigators li:nth-child(3) {
+        color: #e31b6d;
+      }
+      .nav__navigators li:nth-child(3)::before {
+        background: #e31b6d;
+        width: 100px;
+        height: 2px;
+      }
+    }
+    .nav__navigators {
+      display: none;
+      position: fixed;
+      top: 61px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: white;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      z-index: 100;
+      animation: left 0.3s forwards;
+      @keyframes left {
+        0% {
+          transform: translateX(-100%);
+          opacity: 0;
+        }
+        100% {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+      li {
+        font-size: 2.5rem;
+        color: black;
+        margin: 0;
+      }
+    }
+    i.fa-bars {
+      display: block;
+      font-size: 1.5rem;
+    }
+    .nav__links li {
+      padding: 0 18px;
+    }
+  }
 `;
 
 function Nav({offset}) {
+  let hamburger = useRef(null);
+  const closeBtn = useRef(null);
+  const navigator = useRef(null);
   const {main, about, project} = offset;
   const [currentScroll, setCurrentScroll] = useState("home");
   const [iconContent, setIconContent] = useState("");
+  const [isToggle, setIsToggle] = useState(false);
 
   document.addEventListener("scroll", () => {
     if (window.scrollY < about - 100) {
@@ -136,13 +213,36 @@ function Nav({offset}) {
         window.scrollTo({top: main});
         break;
       case "about":
-        window.scrollTo({top: about});
+        window.scrollTo({top: about - 25});
         break;
       case "project":
-        window.scrollTo({top: project});
+        window.scrollTo({top: project - 25});
         break;
       default:
         break;
+    }
+    if (navigator.current.style.position === "fixed") {
+      hamburger.current.style.display = "block";
+      closeBtn.current.style.display = "none";
+      return (navigator.current.style.display = "none");
+    }
+  };
+
+  const handleMenuBar = (e) => {
+    if (isToggle) {
+      e.target.style.color = "";
+      setIsToggle(false);
+    } else {
+      setIsToggle(true);
+      e.target.style.color = "#e31b6d";
+    }
+    console.dir(e.target);
+    if (navigator.current.style.display === "flex") {
+      navigator.current.style.display = "none";
+      navigator.current.style.position = "none";
+    } else {
+      navigator.current.style.display = "flex";
+      navigator.current.style.position = "fixed";
     }
   };
 
@@ -181,7 +281,7 @@ function Nav({offset}) {
       onMouseLeave={handleMouseLeave}
     >
       <div className="nav__container container">
-        <ul className="nav__navigators">
+        <ul className="nav__navigators" ref={navigator}>
           <li data-menu="home" onClick={handleOnClick}>
             HOME
           </li>
@@ -195,6 +295,13 @@ function Nav({offset}) {
           WHAT ELSE?
         </li> */}
         </ul>
+        <i
+          className="fas fa-bars"
+          id="test"
+          onClick={handleMenuBar}
+          ref={hamburger}
+        ></i>
+        <i className="fas fa-times" onClick={handleMenuBar} ref={closeBtn}></i>
         <ul className="nav__links">
           <li
             data-icon="email"

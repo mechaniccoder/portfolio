@@ -156,6 +156,31 @@ const ProjectWrapper = styled.section`
       }
     }
   }
+  @media screen and (min-width: 768px) and (max-width: 1099px) {
+    height: auto;
+    padding: 30px;
+    h1 {
+      font-size: 2.5rem;
+    }
+    h1::before {
+      width: 100px;
+    }
+    .project__gridWrapper .project__gridItem {
+      width: 339px;
+    }
+  }
+  @media screen and (min-width: 360px) and (max-width: 767px) {
+    height: auto;
+    padding: 0;
+    h1 {
+      font-size: 2.5rem;
+      margin: 0px 0 30px;
+      padding: 30px 0 0;
+    }
+    h1::before {
+      width: 100px;
+    }
+  }
 `;
 
 function Project({setOffset}) {
@@ -181,7 +206,7 @@ function Project({setOffset}) {
       <div className="project__container container">
         <div className="project__gridWrapper">
           {projectsList.map((project) => (
-            <div key={project.id}>
+            <div className="project__key" key={project.id}>
               <div className="project__gridItem">
                 <div
                   className="gridItem__img"

@@ -62,7 +62,7 @@ const AboutWrapper = styled.section`
     /* justify-content: space-between; */
     align-items: center;
     position: relative;
-    width: 420px;
+    width: 43%;
     padding: 15px;
     background: #fff;
     border: 1px solid #d9dfeb;
@@ -129,7 +129,7 @@ const AboutWrapper = styled.section`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 620px;
+    width: 55%;
     padding: 15px;
     border: 1px solid #d9dfeb;
     border-radius: 0.28571429rem;
@@ -217,6 +217,99 @@ const AboutWrapper = styled.section`
         color: #e31b6d;
       }
     }
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1099px) {
+    padding: 30px;
+    h1 {
+      font-size: 2.5rem;
+    }
+    h1::before {
+      width: 100px;
+    }
+    .about__values .about__value {
+      margin: 15px 0;
+      width: 48%;
+    }
+    .about__container {
+      flex-direction: column;
+    }
+    .about__profile {
+      width: 100%;
+      margin: 0 0 20px;
+    }
+    .about__profile h2 {
+      text-align: center;
+    }
+    .about__profile .about__personality h3 {
+      flex: none;
+    }
+    .about__teches {
+      width: 100%;
+    }
+    .about__teches .about__tech {
+      margin: 15px 0 0;
+    }
+    .about__teches .about__tech {
+      margin: 15px 0 0;
+    }
+    .about__teches .about__tech.--slidebar:before {
+      top: -6px;
+    }
+  }
+
+  @media screen and (min-width: 360px) and (max-width: 767px) {
+    padding: 0px;
+    h1 {
+      font-size: 2.5rem;
+      margin: 30px 0 30px;
+    }
+    h1::before {
+      width: 100px;
+    }
+    .about__values {
+      justify-content: center;
+      margin: 0 0 20px;
+    }
+    .about__values .about__value {
+      width: 290px;
+      margin: 0 15px 15px;
+    }
+    .about__values .about__value h2 {
+      font-size: 1.4rem;
+    }
+    .about__container {
+      flex-direction: column;
+    }
+    .about__profile {
+      width: 100%;
+      margin: 0 0 20px;
+    }
+    .about__teches {
+      width: 100%;
+    }
+    .about__teches .about__tech i {
+      width: 110px;
+      font-size: 5rem;
+    }
+    .about__teches .about__tech p {
+      font-size: 13px;
+    }
+    .about__teches .about__tech.--slidebar:before {
+      font-size: 1rem;
+    }
+  }
+  /* @media screen and (min-width: 400px) and (max-width: 767px) {
+    .about__values .about__value {
+      width: 290px;
+      margin: 0 15px 15px;
+    }
+  }
+  @media screen and (min-width: 360px) and (max-width: 399px) {
+    .about__values .about__value {
+      width: 100%;
+      margin: 0 0 15px;
+    } */
   }
 `;
 

@@ -63,6 +63,27 @@ const MainWrapper = styled.section`
     margin-left: 10px;
     transition: all 0.3s;
   }
+  @media screen and (min-width: 768px) and (max-width: 1099px) {
+    .main__introduce p {
+      font-size: 1.5rem;
+    }
+    .main__introduce button {
+      font-size: 1.2rem;
+    }
+  }
+
+  @media screen and (min-width: 360px) and (max-width: 767px) {
+    .main__introduce {
+      padding: 0 15px;
+    }
+    .main__introduce p {
+      font-size: 1.3rem;
+    }
+    .main__introduce button {
+      padding: 5px 10px;
+      font-size: 1.2rem;
+    }
+  }
 `;
 
 function Main({app, offset, setOffset}) {
@@ -104,7 +125,7 @@ function Main({app, offset, setOffset}) {
   }, []);
 
   const handleOnClick = () => {
-    window.scrollTo({top: offset.about});
+    window.scrollTo({top: offset.about - 25});
   };
 
   return (
