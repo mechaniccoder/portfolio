@@ -12,11 +12,12 @@ const AboutWrapper = styled.section`
     margin: 15px 0 30px;
     text-align: center;
     font-size: 3rem;
+    color: #1b242f;
     &::before {
       content: "";
       width: 150px;
       height: 5px;
-      background: #000;
+      background: #1b242f;
       position: absolute;
       left: 50%;
       bottom: -10px;
@@ -99,7 +100,7 @@ const AboutWrapper = styled.section`
     p {
       margin: 30px 0 30px;
       line-height: 1.5;
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       strong {
         color: #e31b6d;
       }
@@ -280,6 +281,7 @@ const AboutWrapper = styled.section`
     }
     .about__container {
       flex-direction: column;
+      margin: 0 0 15px;
     }
     .about__profile {
       width: 100%;

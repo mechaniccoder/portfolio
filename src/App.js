@@ -8,7 +8,6 @@ import Project from "./components/Project";
 
 const AppWrapper = styled.div`
   position: relative;
-  overflow: auto;
   scroll-behavior: smooth;
 `;
 
